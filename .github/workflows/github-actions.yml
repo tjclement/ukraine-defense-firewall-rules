@@ -1,0 +1,32 @@
+name: Update blocklists
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '*/30 * * * *'
+jobs:
+  Update-Ticket-Image:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - name: Install linux dependencies
+        run: sudo apt update && sudo apt install python3
+      - name: Download nonspoofed list
+        run: curl --pinnedpubkey "sha256//UEi4/JeWkgUhtk2/CGMC+k53I0a4lyRvirw/8V9w+LU=" https://api.greynoise.io/datashots/ukraine/ukraine_enriched.json > /tmp/ukraine_enriched.json
+      - name: Download spoofable list
+        run: curl --pinnedpubkey "sha256//UEi4/JeWkgUhtk2/CGMC+k53I0a4lyRvirw/8V9w+LU=" https://api.greynoise.io/datashots/ukraine/spoofable_enriched.json > /tmp/spoofable_enriched.json
+      - name: Update blocklists
+        run: python3 scripts/ingest.py --enriched_file=/tmp/ukraine_enriched.json --enriched_spoofable_file=/tmp/spoofable_enriched.json
+      - name: Push changes
+        uses: EndBug/add-and-commit@v7
+        with:
+          branch: main
+          message: "Updated blocklists from IPs reported by Grey Noise"
+          push: true
+      - name: Push changes
+        uses: EndBug/add-and-commit@v7
+        with:
+          branch: gh-pages
+          message: "Updated blocklists from IPs reported by Grey Noise"
+          push: true
