@@ -24,9 +24,3 @@ jobs:
           branch: main
           message: "Updated blocklists from IPs reported by Grey Noise"
           push: true
-      - name: Push changes
-        uses: EndBug/add-and-commit@v7
-        with:
-          branch: gh-pages
-          message: "Updated blocklists from IPs reported by Grey Noise"
-          push: true
