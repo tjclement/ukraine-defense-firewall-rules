@@ -13,3 +13,9 @@ This project produces live-updating IP blocklists for common firewalls that bloc
 * Juniper -> [>> files and docs here <<](./juniper)
 * Check Point -> [>> files and docs here <<](./checkpoint)
 * Cisco, pfsense, ufw, others? -> Please help out with documentation!
+
+## Thanks to
+
+* Yelmar for help with Palo Alto
+* TeQ for help with Check Point
+* [Royvandongen](https://github.com/Royvandongen) for help with Juniper
