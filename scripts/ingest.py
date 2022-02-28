@@ -3,6 +3,7 @@ import json
 from palo_alto import palo_alto_save
 from juniper import juniper_save
 from checkpoint import checkpoint_save
+from pfsense import pfsense_save
 
 def to_ip_lists(json_object):
     results = {
@@ -40,7 +41,7 @@ if __name__ == "__main__":
                         help="Path to downloaded Grey Noise spoofable_enriched.json file", required=False)
     args = parser.parse_args()
 
-    handlers = [palo_alto_save, juniper_save, checkpoint_save]
+    handlers = [palo_alto_save, juniper_save, checkpoint_save, pfsense_save]
 
     with open(args.enriched_file, "rt") as file:
         with open(args.enriched_spoofable_file, "rt") as spoofable_file:
