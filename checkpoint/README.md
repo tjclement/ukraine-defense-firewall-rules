@@ -6,22 +6,22 @@
 
 ## Blocking IPs on Checkpoint Gateway Version R80.30 and higher
 
-We will be using Custom Intelligence Feeds
+We will be using Custom Intelligence Feeds:
 
-## Via the Gaia Clish
+### Via the Gaia Clish
 
 Log in to the Expert mode.
 
 Since all the lists are only a list with ip addresses.
 
-De command is the same for every feed
+The command is the same for every feed
 
 ioc_feeds add --UkraineDefenceList1 ip_list --transport http --resource "https://tjclement.github.io/ukraine-defense-firewall-rules/checkpoint/greynoise_spoofable_all.txt" --format [value:1,type:ip]
 
 To add a second feed.
 ioc_feeds add --<FEED NAME> ip_list --transport http --resource "<URL OF THE FEED>" --format [value:1,type:ip]
 
-## Interval
+#### Interval
 The default update interval is 300 seconds
 
 Use ioc_feeds show_interval to see the interval.
