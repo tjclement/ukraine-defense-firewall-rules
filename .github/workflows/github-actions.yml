@@ -2,8 +2,8 @@ name: Update blocklists
 on:
   push:
     branches: [main]
-  schedule:
-    - cron: '*/30 * * * *'
+#  schedule:
+#    - cron: '*/30 * * * *'
 jobs:
   Update-Ticket-Image:
     runs-on: ubuntu-latest
